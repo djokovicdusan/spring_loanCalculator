@@ -4,7 +4,7 @@ import com.example.spring_loanCalculator.model.PaymentFrequency;
 
 public class Util {
     // simple calculation no 1.
-    public static double calculateLoanPayment(double loanAmount, double interestRate, int numberOfPayments, PaymentFrequency paymentFrequency) {
+    public static double calculateMonthlyLoanPayment(double loanAmount, double interestRate, int numberOfPayments, PaymentFrequency paymentFrequency) {
 
         double i = interestRate / 100 / getFrequencyAsNumber(paymentFrequency);
 

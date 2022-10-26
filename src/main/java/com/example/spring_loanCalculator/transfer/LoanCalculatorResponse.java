@@ -18,4 +18,6 @@ public class LoanCalculatorResponse implements Serializable {
     private PaymentFrequency paymentFrequency;
     private List<AmortizationDetails> amortizationDetailsList;
     private PaymentDetails paymentDetails;
+
+
 }

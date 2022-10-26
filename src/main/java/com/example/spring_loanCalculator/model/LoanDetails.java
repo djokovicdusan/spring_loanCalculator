@@ -14,7 +14,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoanDetailsRequest {
+public class LoanDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
