@@ -10,6 +10,9 @@ import com.example.spring_loanCalculator.transfer.LoanCalculatorResponse;
 import com.example.spring_loanCalculator.util.Util;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class LoanCalculatorService implements ILoanCalculatorService {
     private final LoanCalculatorRepository loanCalculatorRepository;
@@ -35,8 +38,9 @@ public class LoanCalculatorService implements ILoanCalculatorService {
 
         loanDetails.setPaymentDetails(paymentDetails);
         double balanceOwed = loanDetails.getLoanAmount();
+        List<AmortizationDetails> amortizationDetailsList = new ArrayList<>();
         for (int i = 0; i < Util.getFrequencyAsNumber(loanDetails.getPaymentFrequency()); i++) {
-            double interestAmount = Math.round(loanDetails.getLoanAmount() * loanDetails.getInterestRate() / 100 /
+            double interestAmount = Math.round(balanceOwed * loanDetails.getInterestRate() / 100 /
                     Util.getFrequencyAsNumber(loanDetails.getPaymentFrequency()) * 100.00) / 100.00;
             double principalAmount = Math.round((monthlyLoanPayment - interestAmount) * 100.00) / 100.00;
             balanceOwed -= principalAmount;
@@ -45,8 +49,9 @@ public class LoanCalculatorService implements ILoanCalculatorService {
                 balanceOwed = 0;
             }
             AmortizationDetails singlePaymentAmortizationDetails = new AmortizationDetails(i + 1, monthlyLoanPayment, principalAmount, interestAmount, balanceOwed);
-            loanDetails.getPayments().add(singlePaymentAmortizationDetails);
+            amortizationDetailsList.add(singlePaymentAmortizationDetails);
         }
+        loanDetails.setPayments(amortizationDetailsList);
 
         return Mapper.getInstance().mapToDTO(this.loanCalculatorRepository.save(loanDetails));
     }

@@ -21,12 +21,14 @@ public class LoanCalculatorController {
     public LoanCalculatorController(ILoanCalculatorService iLoanCalculatorService) {
         this.iLoanCalculatorService = iLoanCalculatorService;
     }
-    @PostMapping()
-    public ResponseEntity<?> saveLoanDetails(@RequestBody LoanCalculatorRequest loanCalculatorRequest, BindingResult bindingResult){
 
-        if(bindingResult.hasErrors()){
+    @PostMapping()
+    public ResponseEntity<?> saveLoanDetails(@RequestBody LoanCalculatorRequest loanCalculatorRequest, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("error binding");
             return new ResponseEntity<>(new CustomAlert("error", "error"), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<LoanCalculatorResponse>(this.iLoanCalculatorService.saveLoanDetailsRequest(loanCalculatorRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.iLoanCalculatorService.saveLoanDetailsRequest(loanCalculatorRequest), HttpStatus.CREATED);
     }
 }

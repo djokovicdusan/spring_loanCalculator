@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LoanCalculatorRequest {
 
-    private Double loanAmount;
-    private Double interestRate;
-    private Integer numberOfPayments;
+    private double loanAmount;
+    private double interestRate;
+    private double numberOfPayments;
     private PaymentFrequency paymentFrequency;
 }
