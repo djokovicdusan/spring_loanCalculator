@@ -16,7 +16,7 @@ public class AmortizationDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "PERIOD")
+    @Column(name = "period")
     private int period;
 
     @Column(name = "payment_amount")
@@ -25,7 +25,7 @@ public class AmortizationDetails {
     @Column(name = "principal_amount")
     private double principalAmount;
 
-    @Column(name = "interestAmount")
+    @Column(name = "interest_amount")
     private double interestAmount;
 
     @Column(name = "balance_owed")

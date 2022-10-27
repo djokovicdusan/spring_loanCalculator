@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity // @Entity annotation defines that a class can be mapped to a table.
-@Table(name = "loan_details_request")
+@Table(name = "loan_details")
 @Data // @Data is like having implicit @Getter, @Setter, @ToString, @EqualsAndHashCode and @RequiredArgsConstructor
 
 @NoArgsConstructor
@@ -36,7 +36,7 @@ public class LoanDetails {
 
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "loan_details_request_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "amortization_details_id", referencedColumnName = "id", nullable = false)
     private List<AmortizationDetails> payments = new ArrayList<>();
 
 

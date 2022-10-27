@@ -4,16 +4,18 @@ import com.example.spring_loanCalculator.mapper.Mapper;
 import com.example.spring_loanCalculator.model.AmortizationDetails;
 import com.example.spring_loanCalculator.model.LoanDetails;
 import com.example.spring_loanCalculator.model.PaymentDetails;
-import com.example.spring_loanCalculator.repository.LoanDetailsRequestRepository;
+import com.example.spring_loanCalculator.repository.LoanCalculatorRepository;
 import com.example.spring_loanCalculator.transfer.LoanCalculatorRequest;
 import com.example.spring_loanCalculator.transfer.LoanCalculatorResponse;
 import com.example.spring_loanCalculator.util.Util;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LoanCalculatorService implements ILoanCalculatorService {
-    private final LoanDetailsRequestRepository loanDetailsRequestRepository;
+    private final LoanCalculatorRepository loanCalculatorRepository;
 
-    public LoanCalculatorService(LoanDetailsRequestRepository loanDetailsRequestRepository) {
-        this.loanDetailsRequestRepository = loanDetailsRequestRepository;
+    public LoanCalculatorService(LoanCalculatorRepository loanCalculatorRepository) {
+        this.loanCalculatorRepository = loanCalculatorRepository;
     }
 
     @Override
@@ -46,6 +48,6 @@ public class LoanCalculatorService implements ILoanCalculatorService {
             loanDetails.getPayments().add(singlePaymentAmortizationDetails);
         }
 
-        return Mapper.getInstance().mapToDTO(this.loanDetailsRequestRepository.save(loanDetails));
+        return Mapper.getInstance().mapToDTO(this.loanCalculatorRepository.save(loanDetails));
     }
 }
