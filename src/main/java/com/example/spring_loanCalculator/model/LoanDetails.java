@@ -1,6 +1,7 @@
 package com.example.spring_loanCalculator.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Entity // @Entity annotation defines that a class can be mapped to a table.
 @Table(name = "loan_details")
 @Data // @Data is like having implicit @Getter, @Setter, @ToString, @EqualsAndHashCode and @RequiredArgsConstructor
-
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoanDetails {
