@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UtilTest {
 
     @Test
-    void calculateMonthlyLoanPaymentTest() {
+    public void calculateMonthlyLoanPaymentTest() {
         LoanDetails loanDetails = LoanDetails.builder().loanAmount(25000.00)
                 .interestRate(5.00)
                 .numberOfPayments(12)
@@ -23,21 +23,21 @@ public class UtilTest {
     }
 
     @Test
-    void calculateTotalAmountPaidWithInterestTest() {
+    public void calculateTotalAmountPaidWithInterestTest() {
         double monthlyPayment = 2000;
         int numberOfMonths = 6;
         assertThat(Util.calculateTotalAmountPaidWithInterest(monthlyPayment, numberOfMonths)).isEqualTo(12000.00);
     }
 
     @Test
-    void calculateTotalInterestPaidTest() {
+    public void calculateTotalInterestPaidTest() {
         double totalAmountPaidWithInterest = 25682.28;
         double loanAmount = 25000.00;
         assertEquals(Util.calculateTotalInterestPaid(totalAmountPaidWithInterest, loanAmount), 682.28);
     }
 
     @Test
-    void getFrequencyAsNumberTest() {
+    public void getFrequencyAsNumberTest() {
         PaymentFrequency paymentFrequency = PaymentFrequency.ANNUAL;
         assertThat(Util.getFrequencyAsNumber(PaymentFrequency.ANNUAL)).isEqualTo(1);
     }
