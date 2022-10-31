@@ -53,6 +53,9 @@ public class LoanCalculatorService implements ILoanCalculatorService {
         }
         loanDetails.setPayments(amortizationDetailsList);
 
+//        LoanDetails loanDetailsDummy = this.loanCalculatorRepository.save(loanDetails);
+
+
         return Mapper.getInstance().mapToDTO(this.loanCalculatorRepository.save(loanDetails));
     }
 }
